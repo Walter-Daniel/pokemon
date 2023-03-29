@@ -7,7 +7,7 @@ const HomePage = () => {
   return (
     <>
       <h1>Hola mundo!!!</h1>
-      <Button color="gradient">Click me</Button>;
+      <Button color="gradient">Click me</Button>
     </>
   ) 
 }
