@@ -6,6 +6,9 @@
     justify-content: flex-start;
     padding: 0 20px;
 }
+.navbar-pokemon a{
+    display: flex;
+}
 /****************************MAIN**************************/
 .main-pokemon {
     padding: 0 20px;
