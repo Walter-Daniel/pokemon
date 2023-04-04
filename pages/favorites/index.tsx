@@ -1,10 +1,12 @@
-import { GetStaticProps, NextPage, GetStaticPaths  } from 'next';
+import { NextPage } from 'next';
 
 import { Layout } from '@/components/layout';
-import { pokeApi } from '../../api';
-import { Pokemon } from '@/interface';
-import { Button, Card, Container, Grid, Text, Image } from '@nextui-org/react';
 
+import { Pokemon } from '@/interface';
+import { NoFavorite } from '@/components/iu';
+import { useEffect, useState } from 'react';
+import { localFavorites } from '@/utils';
+import { FavoritePokemon } from '@/components/pokemon';
 
 interface Props {
   pokemon: Pokemon;
@@ -12,13 +14,22 @@ interface Props {
 
 const FavoritesPage: NextPage<Props> = ({ pokemon }) => {
 
-  console.log(pokemon)
+  const [favoritePokemon, setFavoritePokemon] = useState<number[]>([]);
+  
+  useEffect(() => {
+
+    setFavoritePokemon( localFavorites.pokemons() );
+   
+  }, [])
+  
+
   return (
     <Layout title='Favoritos'>
-        <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
-          <Text h1> Favoritos </Text>
-
-        </Grid.Container>
+        {
+          favoritePokemon.length === 0 
+            ? ( <NoFavorite /> )
+            : ( <FavoritePokemon pokemons={favoritePokemon} /> )
+            }
     </Layout>
   )
 };
