@@ -1,5 +1,5 @@
 import { Card, Grid } from '@nextui-org/react'
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { FavoriteCardPokemon } from './FavoriteCardPokemon'
 
 interface Props {
@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const FavoritePokemon: FC<Props> = ({ pokemons }) => {
+  console.log(pokemons)
   return (
     <>
         <Grid.Container gap={2} direction='row' justify='flex-start'>
